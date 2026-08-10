@@ -1,0 +1,11 @@
+torch==2.13.0
+demucs==4.1.0
+basic-pitch==0.4.0
+tensorflow==2.16.2
+numpy==1.26.4
+onnxruntime==1.28.0
+piano-transcription-inference==0.0.6
+fastapi==0.141.1
+uvicorn==0.52.1
+python-multipart==0.0.32
+setuptools==75.8.2

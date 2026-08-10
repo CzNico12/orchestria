@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Démix · Séparateur d'instruments MP3 → MIDI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="badge">🎛️ SÉPARATION DE PISTES PAR IA</p>
+      <h1>Démix<span>.</span></h1>
+      <p class="subtitle">Dépose un MP3 : l'intelligence artificielle le découpe piste par piste — guitare, piano, batterie, 808, voix… — puis transforme chaque instrument en fichier MIDI prêt pour ton logiciel de MAO.</p>
+      <div class="chips">
+        <span>🥁 Batterie</span><span>🔊 808 / Basse</span><span>🎸 Guitare</span><span>🎹 Piano</span><span>🎻 Synthés & cordes</span><span>🎤 Voix</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="card" id="uploadCard">
+      <div class="card-head">
+        <span class="step-icon">📤</span>
+        <div>
+          <h2>1 · Dépose ton morceau</h2>
+          <p class="model-line">MP3, WAV, OGG, FLAC, M4A ou AAC. Pour un résultat rapide, conseille des morceaux de moins de 10 minutes.</p>
+        </div>
+      </div>
+      <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Importer un fichier audio">
+        <div class="dz-icon">🎵</div>
+        <p class="dz-main">Glisse ton fichier ici <span>ou clique pour choisir</span></p>
+        <p class="dz-hint" id="fileHint">Aucun fichier sélectionné</p>
+        <input type="file" id="fileInput" accept=".mp3,.wav,.ogg,.flac,.m4a,.aac,audio/*" hidden>
+      </div>
+      <div class="create-actions">
+        <button class="btn btn-primary" id="btnLaunch" disabled>🎛️ Séparer les instruments</button>
+        <span class="mini-note" id="miniNote"></span>
+      </div>
+    </section>
+
+    <section class="card" id="progressCard" hidden>
+      <div class="card-head">
+        <span class="step-icon">⏳</span>
+        <div>
+          <h2>2 · Analyse en cours</h2>
+          <p class="model-line" id="progressMessage">Démarrage…</p>
+        </div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-meta">
+          <span id="progressPct">0 %</span>
+          <span id="progressElapsed">0 s</span>
+        </div>
+      </div>
+      <p class="mini-note">La séparation de chaque instrument peut prendre plusieurs minutes. Laisse l'onglet ouvert !</p>
+    </section>
+
+    <section class="card" id="resultsCard" hidden>
+      <div class="card-head">
+        <span class="step-icon">🎼</span>
+        <div>
+          <h2>3 · Instruments détectés</h2>
+          <p class="model-line" id="resultsFile"></p>
+        </div>
+      </div>
+      <div class="stem-grid" id="stemGrid"></div>
+      <div class="results-actions">
+        <button class="btn btn-ghost" id="btnZip">📦 Tout télécharger (ZIP)</button>
+        <button class="btn btn-ghost" id="btnAgain">🔄 Analyser un autre morceau</button>
+      </div>
+      <p class="mini-note">🎧 Clique sur ▶ pour écouter chaque piste isolée. « MIDI » télécharge la transcription nettoyée : ouvre-la dans FL Studio, Ableton, GarageBand, Logic…</p>
+    </section>
+
+    <section class="card" id="howCard">
+      <div class="card-head">
+        <span class="step-icon">🧠</span>
+        <div>
+          <h2>Comment ça marche ?</h2>
+          <p class="model-line">Deux réseaux de neurones, zéro serveur externe.</p>
+        </div>
+      </div>
+      <div class="how-grid">
+        <div class="how-item"><h3>1 · Demucs 🔀</h3><p>Sépare le morceau en 6 pistes isolées : batterie, basse (808), guitare, piano, autres instruments (synthés, cordes, vents) et voix.</p></div>
+        <div class="how-item"><h3>2 · Modèles pro par instrument 🎹</h3><p>Le piano passe par une transcription professionnelle dédiée (ByteDance), la voix et les mélodies par un réseau entrainé sur la musique, et la batterie est réécrite en kick / snare / hats / toms standard.</p></div>
+        <div class="how-item"><h3>3 · MIDI nettoyé automatiquement ✨</h3><p>Doublons fusionnés, notes parasites supprimées, attaques superposées réparées. Le résultat s'ouvre proprement dans FL Studio, Ableton, GarageBand ou Logic.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Démix — 100 % local : ton audio est traité sur ton ordinateur, rien n'est envoyé sur Internet. 🔒</p>
+  </footer>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
