@@ -1,4 +1,4 @@
-# Démix · MP3 → Instruments séparés → MIDI
+# OrchestrIA · MP3 → Instruments séparés → MIDI
 
 Site local qui découpe un morceau de musique (MP3, WAV, OGG, FLAC, M4A, AAC) en **6 pistes d'instruments isolées** (batterie, 808/basse, guitare, piano, autres, voix) grâce à l'IA, puis **transcrit chaque piste en fichier MIDI** propre et utilisable.
 
